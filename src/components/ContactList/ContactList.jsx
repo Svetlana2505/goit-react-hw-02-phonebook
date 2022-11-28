@@ -5,10 +5,10 @@ export const ContactList = ({ contacts, deleteContact }) => {
     <ul>
       {contacts.map(({ name, id, number }) => {
         return (
-          <li key={id} data-id={id}>
+          <li key={id}>
             <span>{name} : </span>
             <span>{number}</span>
-            <Button type="button" onClick={deleteContact}>
+            <Button type="button" onClick={() => deleteContact(id)}>
               delete
             </Button>
           </li>

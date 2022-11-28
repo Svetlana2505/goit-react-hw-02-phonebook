@@ -29,25 +29,17 @@ class App extends Component {
     this.setState({ filter: event.currentTarget.value });
   };
 
-  deleteContact = e => {
-    const contactId = e.target.parentNode.dataset.id;
-    const contact = this.state.contacts.findIndex(
-      contact => contact.id === contactId
-    );
-    const contacts = [...this.state.contacts];
-
-    contacts.splice(contact, 1);
-
-    this.setState({ contacts });
+  deleteContact = userId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(({ id }) => id !== userId),
+    }));
   };
 
   render() {
     const { contacts, filter } = this.state;
 
-    const normalizeFilter = filter.toLowerCase();
-
     const visibleContacts = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizeFilter)
+      contact.name.toLowerCase().includes(filter.toLowerCase())
     );
     return (
       <>

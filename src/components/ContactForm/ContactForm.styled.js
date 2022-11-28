@@ -8,7 +8,7 @@ export const Form = styled.form`
 export const Input = styled.input`
   display: block;
   outline: none;
-  border: 1px solid black;
+  border: 1px solid grey;
   border-radius: 4px;
 
   &:focus {
